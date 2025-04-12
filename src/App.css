@@ -1,0 +1,28 @@
+.app {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+select, button {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+button {
+  background: #f7941d;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f8f8f8;
+}
