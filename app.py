@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 import random
-from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,8 +9,32 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# Initialize OpenAI client (new way)
-client = OpenAI(api_key=os.getenv('OPENAI_KEY'))
+# Get API key from environment
+openai_api_key = os.getenv('OPENAI_KEY')
+
+# Import OpenAI with version check
+try:
+    # For openai >= 1.0.0
+    from openai import OpenAI
+    client = OpenAI(api_key=openai_api_key)
+    
+    def get_completion(prompt):
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return response.choices[0].message.content
+except (ImportError, TypeError):
+    # Fallback for older openai versions
+    import openai
+    openai.api_key = openai_api_key
+    
+    def get_completion(prompt):
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return response.choices[0].message.content
 
 MEAL_DB = {
     "ghanaian": {
@@ -49,15 +72,10 @@ def recommend():
         # Basic recommendation
         meal = random.choice(MEAL_DB[cuisine][meal_time])
         
-        # AI enhancement - updated for newer OpenAI API
+        # AI enhancement with error handling
         try:
             prompt = f"Give detailed cooking instructions for {meal} in 50 words:"
-            ai_response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": prompt}]
-            )
-            
-            instructions = ai_response.choices[0].message.content
+            instructions = get_completion(prompt)
         except Exception as e:
             # Fallback if OpenAI API fails
             instructions = f"Simple instructions for {meal}: Prepare ingredients, cook according to traditional methods, serve hot."
@@ -77,4 +95,4 @@ def health_check():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(host='0.0.0.0', port=port)
