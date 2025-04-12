@@ -1,0 +1,26 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="55" fill="#ff6b35" />
+  
+  <!-- Plate -->
+  <circle cx="60" cy="60" r="45" fill="white" stroke="#4a5859" stroke-width="2" />
+  
+  <!-- Fork -->
+  <path d="M30 40 L30 80 M25 40 L25 55 M35 40 L35 55 M30 55 C25 55, 35 55, 30 65" stroke="#4a5859" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Robot/AI element -->
+  <rect x="65" y="40" width="25" height="30" rx="5" fill="#5bc0be" />
+  <circle cx="72" cy="50" r="3" fill="white" />
+  <circle cx="83" cy="50" r="3" fill="white" />
+  <path d="M72 60 Q78 65, 83 60" stroke="white" stroke-width="2" fill="none" />
+  <rect x="73" y="30" width="3" height="10" fill="#5bc0be" />
+  <rect x="80" y="30" width="3" height="10" fill="#5bc0be" />
+  
+  <!-- Menu item -->
+  <path d="M45 75 Q60 65, 75 75" stroke="#4a5859" stroke-width="3" fill="none" />
+  <circle cx="60" cy="72" r="5" fill="#ff6b35" />
+  
+  <!-- AI Waves -->
+  <path d="M90 45 Q95 45, 95 50 Q95 55, 100 55 Q105 55, 105 60" stroke="#5bc0be" stroke-width="2" fill="none" />
+  <path d="M90 55 Q95 55, 95 60 Q95 65, 100 65 Q105 65, 105 70" stroke="#5bc0be" stroke-width="2" fill="none" />
+</svg>

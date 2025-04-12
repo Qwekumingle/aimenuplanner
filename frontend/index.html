@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Menu Planner | Discover African Cuisine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.svg" alt="AI Menu Planner Logo">
+                <h1>AI Menu Planner</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#cuisines">Cuisines</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover <span class="accent">African</span> Cuisine</h1>
+                <p>Get AI-powered meal recommendations and cooking instructions tailored to your preferences</p>
+                <button id="get-started-btn">Get Started</button>
+            </div>
+            <div class="hero-image">
+                <img src="hero-image.jpg" alt="Delicious African food">
+            </div>
+        </section>
+
+        <section id="meal-planner" class="meal-planner">
+            <div class="container">
+                <h2>Your Personal Meal Planner</h2>
+                <p class="section-description">Select a cuisine and meal time to get an AI-powered recommendation</p>
+                
+                <div class="meal-form">
+                    <div class="form-group">
+                        <label for="cuisine">Cuisine</label>
+                        <select id="cuisine" name="cuisine">
+                            <option value="ghanaian">Ghanaian</option>
+                            <option value="nigerian">Nigerian</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="meal-time">Meal Time</label>
+                        <select id="meal-time" name="meal-time">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                        </select>
+                    </div>
+                    <button id="recommend-btn" class="btn-primary">Get Recommendation</button>
+                </div>
+
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Preparing your meal recommendation...</p>
+                </div>
+
+                <div id="recommendation" class="recommendation hidden">
+                    <div class="meal-card">
+                        <div class="meal-header">
+                            <h3 id="meal-name">Meal Name</h3>
+                            <span id="meal-tags" class="meal-tags">
+                                <span class="tag cuisine-tag">Cuisine</span>
+                                <span class="tag meal-time-tag">Meal Time</span>
+                            </span>
+                        </div>
+                        <div class="meal-image-container">
+                            <img id="meal-image" src="placeholder-meal.jpg" alt="Meal image">
+                        </div>
+                        <div class="meal-details">
+                            <h4>Cooking Instructions:</h4>
+                            <p id="meal-instructions"></p>
+                        </div>
+                        <div class="meal-actions">
+                            <button id="new-recommendation" class="btn-secondary">Get Another</button>
+                            <button id="share-recommendation" class="btn-accent">
+                                <i class="fas fa-share-alt"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2>About AI Menu Planner</h2>
+                    <p>AI Menu Planner is your gateway to discovering authentic African cuisine. Our platform combines traditional recipes with artificial intelligence to provide you with personalized meal recommendations and detailed cooking instructions.</p>
+                    <p>Whether you're a culinary enthusiast looking to explore new flavors or someone seeking inspiration for your next meal, our AI-powered recommendations are designed to introduce you to the rich and diverse world of African cuisine.</p>
+                </div>
+                <div class="about-image">
+                    <img src="about-image.jpg" alt="African cuisine ingredients">
+                </div>
+            </div>
+        </section>
+
+        <section id="cuisines" class="cuisines">
+            <div class="container">
+                <h2>Explore Cuisines</h2>
+                <div class="cuisine-cards">
+                    <div class="cuisine-card">
+                        <img src="ghanaian-cuisine.jpg" alt="Ghanaian cuisine">
+                        <h3>Ghanaian</h3>
+                        <p>Explore the rich flavors of Ghana with dishes like Jollof rice, Fufu, and Waakye.</p>
+                        <button class="cuisine-select-btn" data-cuisine="ghanaian">Select</button>
+                    </div>
+                    <div class="cuisine-card">
+                        <img src="nigerian-cuisine.jpg" alt="Nigerian cuisine">
+                        <h3>Nigerian</h3>
+                        <p>Discover the diverse culinary traditions of Nigeria with dishes like Egusi soup, Pounded yam, and Akara.</p>
+                        <button class="cuisine-select-btn" data-cuisine="nigerian">Select</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2>What Our Users Say</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <div class="quote">"AI Menu Planner introduced me to Ghanaian cuisine, and I've been hooked ever since! The cooking instructions are clear and easy to follow."</div>
+                        <div class="author">- Sarah Johnson</div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="quote">"As a Nigerian living abroad, this app helps me connect with my roots through food. The recommendations are authentic and delicious!"</div>
+                        <div class="author">- Olu Adeyemi</div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="quote">"I never knew African cuisine was so diverse until I started using this app. Now it's a regular part of our family meal rotation."</div>
+                        <div class="author">- Michael Chen</div>
+                    </div>
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Have questions or feedback? We'd love to hear from you!</p>
+                <form id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.svg" alt="AI Menu Planner Logo">
+                    <h3>AI Menu Planner</h3>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#cuisines">Cuisines</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI Menu Planner. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
